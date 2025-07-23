@@ -1,0 +1,8 @@
+langchain
+python-dotenv
+ipykernel
+langchain-community
+beautifulsoup4
+sentence-transformers
+chromadb
+streamlit
