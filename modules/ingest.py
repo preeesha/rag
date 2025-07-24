@@ -1,14 +1,19 @@
 from langchain_community.document_loaders import WikipediaLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Chroma
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import HuggingFaceEmbeddings
+import time
+
 
 def ingest_wikipedia_topic(topic: str):
     try:
+        print(topic)
         print("fetchning doc")
+        start = time.time()
         loader = WikipediaLoader(query=topic, lang="en", load_max_docs=1)
         docs = loader.load()
-        print(f"✅ Fetched {len(docs)} docs")
+        print(docs)
+        print(f"✅ Fetched {len(docs)} docs in {time.time() - start:.2f}s")
         
         try:
             splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
@@ -35,6 +40,8 @@ def ingest_wikipedia_topic(topic: str):
         print(f"Error fetching docs: {e}")
         return
 
-    
 
   
+
+if __name__ == "__main__":
+    ingest_wikipedia_topic("mughal empire")

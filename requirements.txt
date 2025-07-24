@@ -6,3 +6,6 @@ beautifulsoup4
 sentence-transformers
 chromadb
 streamlit
+wikipedia
+langchain-huggingface 
+langchain-google-genai
